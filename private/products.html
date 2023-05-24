@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+      integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" href="./css/shop.css" />
+    <title>Biafra</title>
+  </head>
+
+  <body>
+    <section class="shop-banner">
+      <h1>KING TONY INC.</h1>
+      <div class="socials">
+        <i class="fab fa-facebook"></i><i class="fab fa-twitter"></i
+        ><i class="fab fa-discord"></i><i class="fab fa-linkedin"></i>
+      </div>
+    </section>
+    <section class="owner-details">
+      <ul>
+        <li><i class="far fa-user"></i> Contact Details</li>
+        <li>
+          <a href="mailto:amuchea57@gmail.com"
+            ><i class="far fa-envelope"></i> amuchea57@gmail.com</a
+          >
+        </li>
+        <li>
+          <a href="tel: 09063213825"><i class="fa fa-phone"></i> Telephone</a>
+        </li>
+      </ul>
+
+      <ul>
+        <li><i class="far fa-map"></i> Shop Location</li>
+        <li><address>Amuhi Umuagi Ihioma Orlu Imo State.</address></li>
+      </ul>
+      <ul>
+        <li><i class="far fa-star"></i> Shop Rating</li>
+        <li class="rate">
+          <p>4.4</p>
+          <i class="fa fa-chevron-right"></i>
+        </li>
+      </ul>
+    </section>
+    <section class="products-parent-container">
+      <h2>PRODUCTS</h2>
+      <section class="items-container">
+        <div class="item-cards">
+          <img src="./images/jewelry-01.jpg" alt="item" />
+          <small>Original Gold, Synthetic and well polished</small>
+          <div class="price-and-rating">
+            <b class="price">£40</b
+            ><small><i class="fas fa-star"></i> 1.1</small>
+          </div>
+          <small class="available">34 Available</small>
+          <button type="submit" class="add-to-cart">Add to cart</button>
+        </div>
+        <div class="item-cards">
+          <img src="./images/jewelry-02.jpg" alt="item" />
+          <small>Original Gold, Synthetic and well polished</small>
+          <div class="price-and-rating">
+            <b class="price">£44</b
+            ><small><i class="fas fa-star"></i> 2.3</small>
+          </div>
+          <small class="available">330 Available</small>
+          <button type="submit" class="add-to-cart">Add to cart</button>
+        </div>
+        <div class="item-cards">
+          <img src="./images/jewelry-03.jpg" alt="item" />
+          <small>Original Gold, Synthetic and well polished</small>
+          <div class="price-and-rating">
+            <b class="price">£110</b
+            ><small><i class="fas fa-star"></i> 2.3</small>
+          </div>
+          <small class="available">200 Available</small>
+          <button type="submit" class="add-to-cart">Add to cart</button>
+        </div>
+        <div class="item-cards">
+          <img src="./images/jewelry-04.jpg" alt="item" />
+          <small>Original Gold, Synthetic and well polished</small>
+          <div class="price-and-rating">
+            <b class="price">£40</b
+            ><small><i class="fas fa-star"></i> 2.3</small>
+          </div>
+          <small class="available">200 Available</small>
+          <button type="submit" class="add-to-cart">Add to cart</button>
+        </div>
+        <div class="item-cards">
+          <img src="./images/jewelry-01.jpg" alt="item" />
+          <small>Original Gold, Synthetic and well polished</small>
+          <div class="price-and-rating">
+            <b class="price">£70</b
+            ><small><i class="fas fa-star"></i> 3.3</small>
+          </div>
+          <small class="available">200 Available</small>
+          <button type="submit" class="add-to-cart">Add to cart</button>
+        </div>
+      </section>
+    </section>
+    <section class="check-out active">
+      <div class="head">
+        <div class="owner-profile">
+          <img src="" alt="" />
+          <small>KING TONY INC.</small>
+        </div>
+        <div class="item-counter"></div>
+        <i class="fa fa-close"></i>
+      </div>
+      <div class="lists">
+        <ul id="list-container"></ul>
+      </div>
+      <div class="button-field">
+        <button type="submit">Checkout 3 items</button>
+      </div>
+    </section>
+    <div class="cart-button">
+      <i class="fa fa-shopping-cart"></i><span class="cart-counter">2</span>
+    </div>
+    <script src="../private/scripts/products.js"></script>
+  </body>
+</html>

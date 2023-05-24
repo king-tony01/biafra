@@ -1,0 +1,239 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    font-family: "Poppins", sans-serif;
+    background: #efefef;
+}
+
+header {
+    width: 100%;
+    padding: 7px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: white;
+}
+
+header a {
+    text-decoration: none;
+    color: green;
+}
+
+header .menu {
+    display: flex;
+    align-items: center;
+}
+
+header .menu a {
+    width: 70px;
+    height: 70px;
+    background: #fef3f3;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 30px;
+    margin: 10px;
+    border-radius: 50%;
+    color: red;
+}
+
+header .menu a:hover {
+    background: #f1d1d1;
+}
+
+.search-bar {
+    width: 40%;
+    border: 1px solid #d7d7d7;
+    padding: 10px;
+    border-radius: 5px;
+    display: flex;
+}
+
+.fa-search {
+    color: #d7d7d7;
+    margin-right: 4px;
+}
+
+.search-bar input {
+    border: none;
+    outline: none;
+    width: 100%;
+    font-size: 16px;
+}
+
+.search-bar input::placeholder {
+    color: #d7d7d7;
+}
+
+.logo {
+    padding: 4px;
+
+    display: flex;
+    align-items: center;
+    font-size: 30px;
+}
+
+.logo img {
+    width: 70px;
+    margin: 10px;
+    border: 1px solid #efefef;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.logo span {
+    color: red;
+}
+
+
+
+
+
+
+/* -------------------------WELCOME BANNER----------- */
+
+.welcome-banner{
+    width: 100%;
+    height: 50vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 10px;
+    background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.7)), url(../images/flag.jpeg);
+    background-position: center;
+    background-size: cover;
+    color: white;
+}
+
+.welcome-banner h1{
+    font-size: 50px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+
+
+.introduction{
+    max-width: 75%;
+    min-width: 600px;
+    padding: 10px;
+    margin: 20px auto;
+    display: flex;
+    align-items: flex-start;
+    background: white;
+    border-radius: 5px;
+}
+
+.introduction div h3{
+    color: red;
+    border-bottom: 3px solid gold;
+    display: inline-block;
+}
+
+.introduction div p{
+    color: rgb(30, 30, 30);
+}
+
+.introduction div img{
+    width: 100%;
+}
+
+
+.introduction div{
+    min-width: 400px;
+    margin: 10px;
+}
+
+
+
+
+
+/* ---------------------COURSES SECTION--------- */
+
+.tutorials{
+    max-width: 75%;
+    min-width: 600px;
+    margin: 40px auto;
+}
+
+.tutorials h2{
+    color: red;
+    margin: 10px;
+}
+
+.courses{
+    width: 100%;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    border-radius: 5px;
+    background: white;
+    flex-wrap: wrap;
+}
+
+
+.course-card{
+    width: 220px;
+    height: 350px;
+    box-shadow: 1px 2px 4px rgba(0, 0, 0, 0.3);
+    border-radius: 5px;
+    position: relative;
+    margin: 10px;
+}
+
+.course-card img{
+    width: 100%;
+    display: block;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+
+.course-card strong{
+    display: block;
+    padding: 3px;
+}
+
+.course-card p{
+    --max-lines: 3;
+    display: -webkit-box;
+    overflow: hidden;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: var(--max-lines);
+    padding: 3px;
+}
+
+.course-card a{
+    text-decoration: none;
+    color: red;
+    font-weight: 800;
+    padding: 10px;
+    border: 2px solid red;
+    border-radius: 5px;
+    display: block;
+    text-align: center;
+    transition: .3s;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+}
+
+.course-card a:hover{
+    background: red;
+    color: white;
+}
+
+.course-card .price{
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 4px;
+    background: green;
+    color: white;
+    border-radius: 5px;
+}

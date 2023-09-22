@@ -1,86 +1,142 @@
-const http = require("http");
-const fs = require("fs");
-const path = require("path");
-const fsPromises = require("fs").promises;
-const route = require("url");
-const qs = require("querystring");
-const PORT = process.env.PORT || 3000;
+import { createServer } from "http";
+import { parse } from "url";
+import { WebSocketServer } from "ws";
+import * as route from "./backend/router.js";
+import {
+  addPost,
+  createUser,
+  fetchUser,
+  getAllPost,
+  updatePost,
+} from "./backend/database.js";
 
-const server = http.createServer((request, response) => {
-  console.log(request.method, request.url);
-  let filePath = path.join(__dirname, "public", "index.html");
-  if (request.url.match(/.js$/)) {
-    let jsPath = path.join(__dirname, request.url);
-    let jsStream = fs.createReadStream(jsPath, "utf-8");
-    response.writeHead(200, { "Content-Type": "application/javascript" });
-    jsStream.pipe(response);
-  }
-  if (request.url.match(/.css$/)) {
-    let cssPath = path.join(__dirname, request.url);
-    let cssStream = fs.createReadStream(cssPath, "utf-8");
-    response.writeHead(200, { "Content-Type": "text/css" });
-    cssStream.pipe(response);
-  }
+const PORT = process.env.PORT || 1990;
 
-  if (request.url.match(/.jpeg$/)) {
-    let jpegPath = path.join(
-      __dirname,
-      `${request.url.startsWith("public") ? "public" : "private"}`,
-      request.url
-    );
-    let jpegStream = fs.createReadStream(jpegPath);
-    response.writeHead(200, { "Content-Type": "image/jpeg" });
-    jpegStream.pipe(response);
+const server = createServer(async (req, res) => {
+  // Server logic here
+  const { pathname, query } = parse(req.url);
+  if (pathname.includes(".")) {
+    route.serverContentType(pathname, res);
   }
-  if (request.url.match(/.jpg$/)) {
-    let jpgPath = path.join(
-      __dirname,
-      `${request.url.startsWith("public") ? "public" : "private"}`,
-      request.url
-    );
-    let jpgStream = fs.createReadStream(jpgPath);
-    response.writeHead(200, { "Content-Type": "image/jpg" });
-    jpgStream.pipe(response);
+  console.log(pathname);
+  if (pathname == "/") {
+    // Landing page here
+    route.serveLanding(res);
   }
-
-  if (request.url === "/") {
-    fs.readFile(filePath, "utf-8", (err, data) => {
-      if (err) throw err;
-      response.writeHead(200, { "Content-Type": "text/html" });
-      response.end(data);
+  if (pathname == "/signup") {
+    route.servePage("/public/signup.html", res);
+  }
+  if (pathname == "/login") {
+    route.servePage("/public/login.html", res);
+  }
+  if (pathname == "/biafra/signup") {
+    let body;
+    req.on("data", (chunk) => {
+      body = chunk;
     });
-  } else if (request.url === "/login.html") {
-    fs.readFile("./public/login.html", "utf-8", (err, data) => {
-      if (err) throw err;
-      response.writeHead(200, { "Content-Type": "text/html" });
-      response.end(data);
-    });
-  } else if (request.url === "/signup.html") {
-    fs.readFile("./public/signup.html", "utf-8", (err, data) => {
-      if (err) throw err;
-      response.writeHead(200, { "Content-Type": "text/html" });
-      response.end(data);
-    });
-  } else if (request.url === "/index.html") {
-    fs.readFile("./public/index.html", "utf-8", (err, data) => {
-      if (err) throw err;
-      response.writeHead(200, { "Content-Type": "text/html" });
-      response.end(data);
+    req.on("end", async () => {
+      try {
+        console.log(JSON.parse(body));
+        const userData = JSON.parse(body);
+        let userRes = await createUser(userData);
+        res.writeHead(200, { "Content-Type": "application/json" });
+        res.end(JSON.stringify(userRes));
+      } catch (error) {
+        console.log(error);
+        res.writeHead(200, { "Content-Type": "application/json" });
+        res.end(JSON.stringify(error));
+      }
     });
   }
 
-  // HANDLING FORM DATA
-  let path1 = route.parse(request.url, true);
-  if (request.url === "/process" && request.method === "POST") {
-    fs.readFile("./private/main.html", "utf-8", (err, data) => {
-      if (err) throw err;
-
-      response.writeHead(200, { "Content-Type": "text/html" });
-      response.end(data);
+  if (pathname == "/biafra/login") {
+    let body;
+    req.on("data", (chunk) => {
+      body = chunk;
+    });
+    req.on("end", async () => {
+      try {
+        console.log(JSON.parse(body));
+        const userData = JSON.parse(body);
+        const { email } = userData;
+        let userRes = await fetchUser(null, email);
+        res.writeHead(200, { "Content-Type": "application/json" });
+        res.end(JSON.stringify(userRes));
+      } catch (error) {
+        console.log(error);
+        res.writeHead(200, { "Content-Type": "application/json" });
+        res.end(JSON.stringify(error));
+      }
+    });
+  }
+  if (pathname == "/getuser/") {
+    console.log(query);
+    try {
+      console.log(await fetchUser(query, null));
+      res.writeHead(200, { "Content-Type": "application/json" });
+      res.end(JSON.stringify(await fetchUser(query, null)));
+    } catch (err) {
+      console.log(err);
+    }
+  }
+  if (pathname == "/post") {
+    let body;
+    req.on("data", (chunk) => {
+      body = chunk;
+    });
+    req.on("end", async () => {
+      try {
+        const postData = JSON.parse(body);
+        console.log(postData);
+        res.writeHead(200, { "Content-Type": "application/json" });
+        res.end(JSON.stringify(await addPost(postData)));
+      } catch (err) {
+        console.log(err);
+      }
+    });
+  }
+  if (pathname == "/posts/all") {
+    try {
+      console.log(await getAllPost());
+      res.writeHead(200, { "Content-Type": "application/json" });
+      res.end(JSON.stringify(await getAllPost()));
+    } catch (err) {
+      console.log(err);
+    }
+  }
+  if (pathname == "/home") {
+    route.servePage("/private/main.html", res);
+  }
+  if (pathname == "/update/like") {
+    let body;
+    req.on("data", (chunk) => {
+      body = chunk;
+    });
+    req.on("end", async () => {
+      try {
+        const data = JSON.parse(body);
+        console.log(data);
+        res.writeHead(200, { "Content-Type": "application/json" });
+        res.end(JSON.stringify(await updatePost(data)));
+      } catch (err) {
+        console.log(err);
+      }
     });
   }
 });
 
+const websocket = new WebSocketServer({ server: server });
+websocket.on("connection", (ws) => {
+  console.log("Client connected");
+  ws.on("message", (message) => {
+    console.log(JSON.parse(message));
+    ws.send(JSON.stringify({ response: "What's up client" }));
+  });
+  ws.on("off", () => {
+    console.log("Client disconnected");
+  });
+});
+
 server.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
+  console.log(`Server is listening at port ${PORT}`);
 });

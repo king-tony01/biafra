@@ -6,8 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
      <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800&display=swap" rel="stylesheet">
-  <script src="https://kit.fontawesome.com/2e25a32533.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="../private/css/login-and-signup.css">
+  <!-- <script src="https://kit.fontawesome.com/2e25a32533.js" crossorigin="anonymous"></script> -->
+  <link rel="stylesheet" href="/fontawesome-free-6.3.0-web/css/all.css">
+    <link rel="stylesheet" href="/private/css/login-and-signup.css">
 
     <title>BIAFRA - Sign Up</title>
 </head>
@@ -20,23 +21,23 @@
     </div>
     <section class="side-nav">
       <i class="fa fa-close"></i>
-      <a href="index.html">HOME</a>
+      <a href="/">HOME</a>
         <a href="#">CONTACT</a>
         <a href="#">HISTORY</a>
-        <a href="signup.html" id="sign-up-hide">SIGN UP</a>
-        <a href="login.html" id="login-hide">LOGIN</a>
+        <a href="/signup" id="sign-up-hide">SIGN UP</a>
+        <a href="/login" id="login-hide">LOGIN</a>
     </section>
     <i class="fa fa-bars"></i>
   </header>
   <main>
     <section class="title">
-      <h1>BI<span class="one">AF<span><span class="two">RA</span></h1>
+      <h1>BI<span class="one">AF</span><span class="two">RA</span></h1>
         <p>Welcome! let’s help you get started. sign up for an account to join the <strong>I.P.O.B</strong></p>
     </section>
   
     <section class="form">
       <small>All fields marked  (<sup>*</sup>)  are mandatory</small>
-      <form action="./process" method="post" accept-charset="utf-8">
+      <form>
         <fieldset>
           <legend>Profile</legend>
           <p><label for="surname">Surname<sup>*</sup></label> <div class="input"><input type="text" name="surname" id="surname" value=""  required autofocus autocomplete="on"/></div></p>
@@ -54,16 +55,16 @@
               Date Of Birth<sup>*</sup>
             </label>
             <div class="input">
-              <input type="date" name="" id="date-of-birth" value="" required/>
+              <input type="date" name="date-of-birth" id="date-of-birth" value="" required/>
             </div>
           </p>
           <p><label for="email">Email<sup>*</sup></label> <div class="input"><input type="email" name="email" id="email" value="" required/></div></p>
-          <p><label for="origin">Origin <sup>*</sup></label><select name="origin" id="origin"><option value="nigeria">Biafra</option></select></p>
+          <p><label for="origin">Origin <sup>*</sup></label><select name="origin" id="origin"><option value="Biafra">Biafra</option></select></p>
            <p><label for="password">Password<sup>*</sup></label> <div class="input"><input type="password" name="password" id="password" value="" required/></div></p>
             <p><label for="retype-password">Retype password<sup>*</sup></label> <div class="input"><input type="password" name="retype-password" id="retype-password" value="" required/></div></p>
           <p><label for="phone">Tel<sup>*</sup></label> <div class="input"><input type="tel" name="tel" id="tel" value="" required/></div></p>
         </fieldset>
-        <button type="submit">Sign Up</button>
+        <button type="submit" id="submit">Sign Up</button>
       </form>
     </section>
     <div class="modal"></div>
@@ -81,7 +82,7 @@
   <small><i>Powered by King Tony Tech.</i></small>
 </footer>
 
-<script src="main.js"></script>
+<script src="/private/scripts/main.js"></script>
 </body>
 
 </html>

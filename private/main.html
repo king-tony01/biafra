@@ -15,16 +15,16 @@
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     />
-    <!-- <link rel="stylesheet" href="./fontawesome-free-6.3.0-web/css/all.css" /> -->
+    <link rel="stylesheet" href="../fontawesome-free-6.3.0-web/css/all.css" />
     <link rel="stylesheet" href="../private/css/main.css" />
     <title>Biafra</title>
   </head>
 
   <body>
     <header>
-      <a href="index.html">
+      <a href="/">
         <div class="logo">
-          <img src="./images/coat-of-arm.jpeg" alt="" />
+          <img src="/private/images/coat-of-arm.jpeg" alt="" />
           BIAFRA<span>.org</span>
         </div>
       </a>
@@ -49,108 +49,39 @@
     <main>
       <section class="settings">
         <section class="profile">
-          <img src="./images/image-01.jpeg" alt="" id="user-image" />
-          <div><b>KING TONY</b> <small>amuchea57@gmail.com</small></div>
+          <img src="/private/images/image-01.jpeg" alt="" id="user-image" />
+          <div>
+            <b id="username" class="username"></b>
+            <small id="email" class="email"></small>
+          </div>
           <i class="fa fa-close" id="close-menu"></i>
         </section>
         <section class="menus">
           <ul>
-            <li>
+            <li data-id="home">
               <p><i class="fa fa-home"></i>Home</p>
               <i class="fa fa-chevron-right"></i>
             </li>
-            <li>
-              <p><i class="fa fa-gear"></i>Settings</p>
+            <li data-id="profile">
+              <p><i class="fa fa-user"></i>Profile</p>
               <i class="fa fa-chevron-right"></i>
             </li>
-            <li>
+            <li data-id="channels">
               <p><i class="fa fa-users"></i>Channels</p>
               <i class="fa fa-chevron-right"></i>
             </li>
-            <li>
-              <p><i class="fa fa-video"></i>Videos</p>
+
+            <li data-id="utilities">
+              <p><i class="fa fa-wrench"></i>Utilities</p>
               <i class="fa fa-chevron-right"></i>
             </li>
-            <li>
-              <p><i class="far fa-flag"></i>Pages</p>
-              <i class="fa fa-chevron-right"></i>
-            </li>
-            <li>
-              <p><i class="fa fa-radio"></i>Radio Biafra</p>
-              <i class="fa fa-chevron-right"></i>
-            </li>
-            <li>
-              <p><i class="fa fa-shop"></i>My Shop</p>
-              <i class="fa fa-chevron-right"></i>
-            </li>
-            <a href="schools.html"
-              ><li>
-                <p><i class="fa fa-graduation-cap"></i>Education</p>
-                <i class="fa fa-chevron-right"></i></li
-            ></a>
           </ul>
         </section>
       </section>
-
-      <section class="center">
-        <section class="post">
-          <section class="post-head">
-            <div class="name">
-              <img src="./images/image-02.jpeg" alt="" id="user-image" />
-              <div class="user-details">
-                <b id="username">Ifesinachi Odidi</b>
-                <span class="date">11:08 am</span>
-              </div>
-            </div>
-            <a href="#" id="follow-btn"><i class="fa fa-plus"></i> Follow</a>
-          </section>
-          <section class="post-body">
-            <article>
-              <p>
-                The list above is the list of those with zero in their
-                mathematics results. You have to pray hard that something is
-                done about it or your CGPA will drop drastically, maths is 4
-                credit units.
-              </p>
-            </article>
-            <section class="images">
-              <img src="./images/image-01.jpeg" alt="" />
-              <img src="./images/image-03.jpeg" alt="" />
-            </section>
-          </section>
-          <section class="actions">
-            <div class="display-actions">
-              <div class="icons">
-                <i class="fas fa-star"></i>
-                <i class="fas fa-face-smile"></i>
-                <i class="fas fa-heart"></i>
-              </div>
-              <div class="comment-share">6 comments</div>
-            </div>
-            <div class="action-btn">
-              <p><i class="far fa-star"></i> Like</p>
-              <p><i class="far fa-comment"></i> Comment</p>
-              <p><i class="fa fa-share"></i> Share</p>
-            </div>
-            <div class="comment-area">
-              <img src="./images/image-03.jpeg" alt="" id="user-image" />
-              <div class="comment-box">
-                <textarea
-                  name=""
-                  id="comment-input"
-                  placeholder="Comment something"
-                ></textarea>
-                <i class="far fa-paper-plane"></i>
-              </div>
-            </div>
-          </section>
-        </section>
-
-        <section class="posting">
-          <i class="fa fa-pen-square" id="create-post-button"></i>
-        </section>
+      <section class="center"></section>
+      <section class="posting">
+        <i class="fa fa-pen-square" id="create-post-button"></i>
       </section>
-
       <section class="notifications">
         <div class="notification-head">
           <i class="far fa-bell"></i>
@@ -171,6 +102,37 @@
         <div class="write">
           <i class="fa fa-pen-square"></i>
         </div>
+      </section>
+      <section class="chat-room">
+        <i class="fa fa-close" id="close-chats"></i>
+        <section class="chat-room-head">
+          <div>
+            <img src="./images/image-01.jpeg" alt="" id="user-image" />
+            <b>King Tony</b>
+          </div>
+          <div class="shift">
+            <i class="fa fa-phone"></i><i class="fa fa-video"></i>
+          </div>
+        </section>
+        <section class="messages-container"></section>
+        <section class="input-area">
+          <div class="image-and-documents">
+            <i class="fa fa-link"></i>
+            <i class="fa fa-image"></i>
+          </div>
+          <div class="enter-message">
+            <textarea
+              name=""
+              id=""
+              cols="10"
+              rows=""
+              placeholder="Send a message..."
+            ></textarea>
+          </div>
+          <div class="send-button">
+            <i class="far fa-paper-plane"></i>
+          </div>
+        </section>
       </section>
       <form action="#" id="form">
         <div class="main-head">
@@ -203,70 +165,45 @@
           <i class="far fa-face-smile" title="Open emoji keyboard"></i
           ><input
             type="file"
-            name=""
-            id=""
+            name="postImages"
+            id="post-image"
             multiple
             accept=".jpeg, .png, .jpg"
             title="Add an image"
+            class="post-image"
           />
         </section>
         <button id="post-button">POST</button>
       </form>
       <div id="modal"></div>
-      <section class="chat-room">
-        <i class="fa fa-close" id="close-chats"></i>
-        <section class="chat-room-head">
-          <div>
-            <img src="./images/image-01.jpeg" alt="" id="user-image" />
-            <b>King Tony</b>
-          </div>
-          <div class="shift">
-            <i class="fa fa-phone"></i><i class="fa fa-video"></i>
-          </div>
-        </section>
-        <section class="messages-container"></section>
-        <section class="input-area">
-          <div class="image-and-documents">
-            <i class="fa fa-link"></i>
-            <i class="fa fa-image"></i>
-          </div>
-          <div class="enter-message">
-            <textarea
-              name=""
-              id=""
-              cols="10"
-              rows=""
-              placeholder="Send a message..."
-            ></textarea>
-          </div>
-          <div class="send-button">
-            <i class="far fa-paper-plane"></i>
-          </div>
-        </section>
-      </section>
+
       <section class="menu-bar">
         <p>
-          <i class="fa fa-tv"></i>
+          <i class="fa fa-tv" data-id="videos"></i>
           <small>TV</small>
         </p>
         <p>
-          <i class="far fa-comments" id="open-message2"></i>
+          <i class="far fa-comments" id="open-message2" data-id="messages"></i>
           <small>CHATS</small>
         </p>
         <p>
-          <i class="fa fa-home"></i>
+          <i class="fa fa-home" data-id="home"></i>
           <small>HOME</small>
         </p>
         <p>
-          <i class="fa fa-shop"></i>
+          <i class="fa fa-shop" data-id="market"></i>
           <small>MARKET</small>
         </p>
         <p>
-          <i class="far fa-bell" id="open-notifications2"></i>
+          <i
+            class="far fa-bell"
+            id="open-notifications2"
+            data-id="notifications"
+          ></i>
           <small>NOTIFICATIONS</small>
         </p>
       </section>
     </main>
-    <script src="../private/scripts/home.js"></script>
+    <script src="/private/scripts/home.js"></script>
   </body>
 </html>

@@ -6,8 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800&display=swap" rel="stylesheet">
-  <script src="https://kit.fontawesome.com/2e25a32533.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="../private/css/login-and-signup.css">
+  <!-- <script src="https://kit.fontawesome.com/2e25a32533.js" crossorigin="anonymous"></script> -->
+  <link rel="stylesheet" href="/fontawesome-free-6.3.0-web/css/all.css">
+    <link rel="stylesheet" href="/private/css/login-and-signup.css">
 
     <title>BIAFRA - Login</title>
 
@@ -21,11 +22,11 @@
     </div>
     <section class="side-nav">
       <i class="fa fa-close"></i>
-      <a href="index.html">HOME</a>
+      <a href="/">HOME</a>
         <a href="#">CONTACT</a>
         <a href="#">HISTORY</a>
-        <a href="signup.html" id="sign-up-hide">SIGN UP</a>
-        <a href="login.html" id="login-hide">LOGIN</a>
+        <a href="/signup" id="sign-up-hide">SIGN UP</a>
+        <a href="/login" id="login-hide">LOGIN</a>
     </section>
     <i class="fa fa-bars"></i>
   </header>
@@ -40,14 +41,41 @@
       <div class="alertWindow"><i class="fa fa-close"></i>
         sucess
       </div>
-      <form action="" method="get" accept-charset="utf-8">
-          <p><label for="email">Email</label> <div class="input"><input type="email" name="email" id="email" value="" required/></div></p>
-           <p><label for="password" >Password</label> <div class="input"><input type="password" name="password" id="password" value="" required title="Wrong pattern"/></div></p>
+      <form action="/biafra/login" method="post">
+          <p><label for="email">Email</label> <div class="input"><input type="email" name="email" id="email" required/></div></p>
+           <p><label for="password" >Password</label> <div class="input"><input type="password" name="password" id="password" required title="Password" pattern="[a-z, A-Z, 0-9]"/></div></p>
         <button type="submit" id="submit">Sign Up</button>
       </form>
     </section>
   </main>
-<script src="main.js"></script>
+<script>
+  const submitBtn = document.getElementById("submit");
+  const inputEl = document.querySelectorAll("input");
+  const form = document.querySelector("form");
+  const alertWindow = document.querySelector(".alertWindow");
+  const originContainer = document.getElementById("origin");
+  submitBtn.addEventListener("click", async (e) => {
+  e.preventDefault();
+  const data = new FormData(form);
+  const user = {
+    email: data.get("email"),
+    password: data.get("password"),
+  };
+  const response = await fetch("/biafra/login", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(user),
+  });
+  const resData = await response.json();
+  console.log(resData);
+  const {id} = resData.data[0]
+  if (resData.stat) {
+    location.assign(`http://localhost:1990/home?${id}`);
+  }
+});
+</script>
 </body>
 
 </html>
